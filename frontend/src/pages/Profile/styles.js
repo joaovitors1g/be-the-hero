@@ -9,6 +9,7 @@ export const ProfileContainer = styled.div`
   h1 {
     margin-top: 80px;
     margin-bottom: 24px;
+    color: ${props => props.theme.colors.text};
   }
 `;
 
@@ -19,6 +20,7 @@ export const ProfileHeader = styled.header`
   span {
     font-size: 20px;
     margin-left: 24px;
+    color: ${props => props.theme.colors.text};
   }
 
   img {
@@ -29,6 +31,10 @@ export const ProfileHeader = styled.header`
     width: 260px;
     margin-left: auto;
     margin-top: 0;
+  }
+
+  .theme-switcher {
+    margin-left: auto;
   }
 `;
 
@@ -54,7 +60,7 @@ export const IncidentList = styled.ul`
 `;
 
 export const IncidentItem = styled.li`
-  background: #fff;
+  background: ${props => props.theme.colors.card.background};
   padding: 24px;
   border-radius: 8px;
   position: relative;
@@ -62,7 +68,7 @@ export const IncidentItem = styled.li`
   strong {
     display: block;
     margin-bottom: 16px;
-    color: #41414d;
+    color: ${props => props.theme.colors.card.title};
   }
 
   p + strong {
@@ -70,7 +76,7 @@ export const IncidentItem = styled.li`
   }
 
   p {
-    color: #737380;
+    color: ${props => props.theme.colors.card.value};
     line-height: 21px;
     font-size: 16px;
   }

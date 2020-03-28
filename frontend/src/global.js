@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
 
   * {
     margin: 0;
@@ -12,7 +11,7 @@ export default createGlobalStyle`
 
   body {
     font: 400 14px Roboto, sans-serif;
-    background: #f0f0f5;
+    background: ${props => props.theme.colors.background};
     -webkit-font-smoothing: antialised;
   }
 
@@ -29,7 +28,7 @@ export default createGlobalStyle`
   form input {
     width: 100%;
     height: 60px;
-    color: #333;
+    color: ${props => props.theme.colors.text};
     border: 1px solid #dcdce6;
     border-radius: 8px;
     padding: 0 24px;
@@ -38,7 +37,7 @@ export default createGlobalStyle`
   form textarea {
     width: 100%;
     min-height: 140px;
-    color: #333;
+    color: ${props => props.theme.colors.text};
     border: 1px solid #dcdce6;
     border-radius: 8px;
     padding: 16px 24px;

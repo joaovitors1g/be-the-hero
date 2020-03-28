@@ -19,7 +19,7 @@ export const NewIncidentContainer = styled.div`
 export const NewIncidentContent = styled.div`
   width: 100%;
   padding: 96px;
-  background: #f0f0f5;
+  background: ${props => props.theme.colors.card.background};
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   display: flex;
@@ -34,12 +34,18 @@ export const LeftSide = styled.section`
   h1 {
     margin: 64px 0 32px;
     font-size: 32px;
+    color: ${props => props.theme.colors.text};
   }
 
   p {
     font-size: 18px;
-    color: #737380;
+    /*color: #737380;*/
+    color: ${props => props.theme.colors.text};
     line-height: 32px;
+  }
+
+  .back-link {
+    color: ${props => props.theme.colors.text};
   }
 `;
 
@@ -50,5 +56,6 @@ export const NewIncidentForm = styled.form`
   input,
   textarea {
     margin-top: 8px;
+    color: ${props => props.theme.colors.form.placeholder};
   }
 `;

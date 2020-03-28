@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
+
+import Switch from 'react-switch';
+import { ThemeContext } from 'styled-components';
 
 import api from '../../services/api';
 
@@ -15,8 +18,12 @@ import {
   DeleteButton
 } from './styles';
 
+import ThemeChangerContext from '../../context/ThemeChangerContext';
+
 export default function Profile() {
   const [incidents, setIncidents] = useState([]);
+  const { colors, title } = useContext(ThemeContext);
+  const toggleTheme = useContext(ThemeChangerContext);
 
   const ongName = localStorage.getItem('ongName');
   const ongId = localStorage.getItem('ongId');
@@ -62,7 +69,17 @@ export default function Profile() {
       <ProfileHeader>
         <img src={logoImg} alt='Be The Hero' />
         <span>Bem vinda, {ongName}</span>
-
+        <Switch
+          className='theme-switcher'
+          onChange={toggleTheme}
+          checked={title === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          onColor={colors.primary}
+        />
         <Link className='button' to='/incidents/new'>
           Cadastrar novo caso
         </Link>

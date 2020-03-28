@@ -5,12 +5,10 @@ import Logon from './pages/Logon';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import NewIncident from './pages/NewIncident';
-import GlobalStyle from './global';
 
 export default function Routes() {
   return (
     <>
-      <GlobalStyle />
       <Router>
         <Switch>
           <Route exact path='/' component={Logon} />
