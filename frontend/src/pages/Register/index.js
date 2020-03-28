@@ -5,7 +5,13 @@ import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 import logoImg from '../../assets/logo.svg';
 
-import './styles.css';
+import {
+  RegisterContainer,
+  RegisterContent,
+  RegisterForm,
+  RegisterHeader,
+  InputGroup
+} from './styles';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -39,9 +45,9 @@ export default function Register() {
   }
 
   return (
-    <div className='register-container'>
-      <div className='content'>
-        <section>
+    <RegisterContainer>
+      <RegisterContent>
+        <RegisterHeader>
           <img src={logoImg} alt='Be The Hero' />
 
           <h1>Cadastro</h1>
@@ -55,8 +61,8 @@ export default function Register() {
             <FiArrowLeft size={16} color='#E02041' />
             Voltar para logon
           </Link>
-        </section>
-        <form onSubmit={handleRegister}>
+        </RegisterHeader>
+        <RegisterForm onSubmit={handleRegister}>
           <input
             placeholder='Nome da ONG'
             value={name}
@@ -76,7 +82,7 @@ export default function Register() {
             onChange={e => setWhatsapp(e.target.value)}
             required
           />
-          <div className='input-group'>
+          <InputGroup>
             <input
               placeholder='Cidade'
               value={city}
@@ -90,12 +96,12 @@ export default function Register() {
               required
               style={{ width: 80 }}
             />
-          </div>
+          </InputGroup>
           <button className='button' type='submit'>
             Cadastrar
           </button>
-        </form>
-      </div>
-    </div>
+        </RegisterForm>
+      </RegisterContent>
+    </RegisterContainer>
   );
 }

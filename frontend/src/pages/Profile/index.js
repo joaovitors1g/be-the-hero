@@ -6,7 +6,14 @@ import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
 
-import './styles.css';
+import {
+  ProfileHeader,
+  ProfileContainer,
+  IncidentList,
+  IncidentItem,
+  HeaderButton,
+  DeleteButton
+} from './styles';
 
 export default function Profile() {
   const [incidents, setIncidents] = useState([]);
@@ -51,23 +58,23 @@ export default function Profile() {
   }
 
   return (
-    <div className='profile-container'>
-      <header>
+    <ProfileContainer>
+      <ProfileHeader>
         <img src={logoImg} alt='Be The Hero' />
         <span>Bem vinda, {ongName}</span>
 
         <Link className='button' to='/incidents/new'>
           Cadastrar novo caso
         </Link>
-        <button type='button' onClick={handleLogout}>
+        <HeaderButton onClick={handleLogout}>
           <FiPower size={18} color='#E02041' />
-        </button>
-      </header>
+        </HeaderButton>
+      </ProfileHeader>
 
       <h1>Casos Cadastrados</h1>
-      <ul>
+      <IncidentList>
         {incidents.map(incident => (
-          <li key={incident.id}>
+          <IncidentItem key={incident.id}>
             <strong>Caso</strong>
             <p>{incident.title}</p>
 
@@ -82,15 +89,12 @@ export default function Profile() {
               }).format(incident.value)}
             </p>
 
-            <button
-              type='button'
-              onClick={() => handleDeleteIncident(incident.id)}
-            >
+            <DeleteButton onClick={() => handleDeleteIncident(incident.id)}>
               <FiTrash2 size={20} color='#a8a8b3' />
-            </button>
-          </li>
+            </DeleteButton>
+          </IncidentItem>
         ))}
-      </ul>
-    </div>
+      </IncidentList>
+    </ProfileContainer>
   );
 }

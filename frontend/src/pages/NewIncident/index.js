@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+import {
+  NewIncidentContainer,
+  NewIncidentContent,
+  NewIncidentForm
+} from './styles';
+
 import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
-
-import './styles.css';
 
 export default function NewIncident() {
   const ongId = localStorage.getItem('ongId');
@@ -39,8 +43,8 @@ export default function NewIncident() {
   }
 
   return (
-    <div className='new-incident-container'>
-      <div className='content'>
+    <NewIncidentContainer>
+      <NewIncidentContent>
         <section>
           <img src={logoImg} alt='Be The Hero' />
 
@@ -56,7 +60,7 @@ export default function NewIncident() {
             Voltar para home
           </Link>
         </section>
-        <form onSubmit={handleNewIncident}>
+        <NewIncidentForm onSubmit={handleNewIncident}>
           <input
             value={title}
             onChange={e => setTitle(e.target.value)}
@@ -75,8 +79,8 @@ export default function NewIncident() {
           <button className='button' type='submit'>
             Cadastrar
           </button>
-        </form>
-      </div>
-    </div>
+        </NewIncidentForm>
+      </NewIncidentContent>
+    </NewIncidentContainer>
   );
 }
